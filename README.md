@@ -45,7 +45,7 @@ src/
     ├── PokemonList.js     # Logika filter, sorting, dan load Pokémon
     ├── PokemonCard.js     # Kartu tampilan individual Pokémon
     └── PokemonDetail.js   # Detail pop-up untuk setiap Pokémon
-```plaintext
+# End of project structure
 
 ## Pendekatan dan Cara Saya Mengerjakan
 
