@@ -122,3 +122,7 @@ http://localhost:3000
   <img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/054995da-8733-4b4e-85d0-422a47c7296a" />
   <img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/5d52d45b-9990-4580-b505-ba90c72877b5" />
 
+- **Modal Detail Pokemon:**
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/86cecc3e-eeda-4857-8d3a-129d744eb9b1" />
+
+
