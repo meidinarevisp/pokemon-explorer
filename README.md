@@ -1,6 +1,5 @@
 # Pokémon Explorer - React Web App
 
-Proyek ini saya buat sebagai bagian dari **tes teknis magang** untuk menunjukkan pemahaman saya terhadap dasar-dasar pengembangan web menggunakan **React**.  
 Aplikasi ini menampilkan data Pokémon dari [PokéAPI](https://pokeapi.co/api/v2/pokemon), menampilkannya dengan gaya visual yang saya kreasikan sendiri, serta menambahkan beberapa fitur tambahan agar tampil lebih menarik dan interaktif.
 
 Saya ingin menunjukkan bahwa meskipun proyek ini sederhana, saya berusaha membuatnya tidak hanya berfungsi dengan baik, tetapi juga memiliki identitas visual dan pengalaman pengguna yang menyenangkan.
