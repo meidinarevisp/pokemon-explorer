@@ -29,18 +29,21 @@ Tugas utamanya adalah membuat halaman web sederhana yang:
 ## Struktur Proyek
 
 src/
-├── App.js # Routing utama (Home dan List)
-├── index.js # Entry point React
-├── index.css # Styling global dan animasi custom
+├── App.js                 # Routing utama (Home dan List)
+├── index.js               # Entry point React
+├── index.css              # Styling global dan animasi custom
+│
 ├── utils/
-│ └── api.js # Fungsi untuk fetch data dari PokéAPI
+│   └── api.js             # Fungsi untuk fetch data dari PokéAPI
+│
 ├── pages/
-│ ├── Home.js # Halaman utama (intro dan preview Pokémon)
-│ └── PokemonListPage.js# Halaman daftar Pokémon lengkap
-├── components/
-│ ├── PokemonList.js # Logika filter, sorting, dan load Pokémon
-│ ├── PokemonCard.js # Kartu tampilan individual Pokémon
-│ └── PokemonDetail.js # Detail pop-up untuk setiap Pokémon
+│   ├── Home.js            # Halaman utama (intro dan preview Pokémon)
+│   └── PokemonListPage.js # Halaman daftar Pokémon lengkap
+│
+└── components/
+    ├── PokemonList.js     # Logika filter, sorting, dan load Pokémon
+    ├── PokemonCard.js     # Kartu tampilan individual Pokémon
+    └── PokemonDetail.js   # Detail pop-up untuk setiap Pokémon
 
 ## Pendekatan dan Cara Saya Mengerjakan
 
