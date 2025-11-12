@@ -94,6 +94,25 @@ Selain itu, bekerja dengan **PokéAPI** juga menyenangkan karena datanya lengkap
 
 Saya juga merasa proyek ini memberi ruang untuk mengekspresikan **gaya desain pribadi**, yaitu tampilan yang modern, bersih, tapi tetap punya karakter visual yang kuat.
 
+## Cara Menjalankan Proyek
+1.Clone repository:
+```plaintext
+git clone <url-repo-anda>
+cd pokemon-explorer
+```
+2. Install dependencies:
+```plaintext
+npm install
+```
+4. Jalankan aplikasi:
+```plaintext
+npm start
+```
+5. Buka di browser:
+```plaintext
+http://localhost:3000
+```
+
 ## Preview
 
 - **Home Page:** Teks animasi bertema retro dengan marquee Pokémon berjalan.
