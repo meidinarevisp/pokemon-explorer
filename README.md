@@ -28,6 +28,7 @@ Tugas utamanya adalah membuat halaman web sederhana yang:
 
 ## Struktur Proyek
 
+```plaintext
 src/
 ├── App.js                 # Routing utama (Home dan List)
 ├── index.js               # Entry point React
