@@ -1,15 +1,15 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import PokemonListPage from "./pages/PokemonListPage";
 
 function App() {
   return (
-    <BrowserRouter basename="/pokemon-explorer">
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/list" element={<PokemonListPage />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
