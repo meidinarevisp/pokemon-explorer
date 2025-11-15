@@ -101,7 +101,7 @@ function Home() {
                   className="pokemon-card flex-shrink-0 w-36 h-36 md:w-48 md:h-48 bg-gradient-to-br from-white/5 to-white/10 rounded-2xl border-2 border-white/20 p-4 flex flex-col items-center justify-center backdrop-blur-sm border-glow"
                 >
                   <img
-                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
+                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${id}.png`}
                     alt={pokemon.name}
                     className="pokemon-img w-full h-full object-contain drop-shadow-2xl"
                     loading="lazy"
