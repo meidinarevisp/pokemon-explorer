@@ -93,8 +93,6 @@ function Home() {
         <div className="relative w-full h-56 md:h-72 bg-gradient-to-b from-transparent via-white/5 to-transparent border-y border-white/10 flex items-center overflow-hidden backdrop-blur-sm">
           <div className="flex animate-marquee gap-6 md:gap-8 items-center px-4">
             {[...pokemons, ...pokemons, ...pokemons].map((pokemon, index) => {
-              const id = pokemon.url.split("/").slice(-2, -1)[0];
-
               return (
                 <div
                   key={`${pokemon.name}-${index}`}
