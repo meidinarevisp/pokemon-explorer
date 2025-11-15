@@ -93,13 +93,15 @@ function Home() {
         <div className="relative w-full h-56 md:h-72 bg-gradient-to-b from-transparent via-white/5 to-transparent border-y border-white/10 flex items-center overflow-hidden backdrop-blur-sm">
           <div className="flex animate-marquee gap-6 md:gap-8 items-center px-4">
             {[...pokemons, ...pokemons, ...pokemons].map((pokemon, index) => {
+              const id = pokemon.url.split("/").slice(-2, -1)[0];
+
               return (
                 <div
                   key={`${pokemon.name}-${index}`}
                   className="pokemon-card flex-shrink-0 w-36 h-36 md:w-48 md:h-48 bg-gradient-to-br from-white/5 to-white/10 rounded-2xl border-2 border-white/20 p-4 flex flex-col items-center justify-center backdrop-blur-sm border-glow"
                 >
                   <img
-                    src={pokemon.image}
+                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
                     alt={pokemon.name}
                     className="pokemon-img w-full h-full object-contain drop-shadow-2xl"
                     loading="lazy"
