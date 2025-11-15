@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaFire, FaSyncAlt } from "react-icons/fa";
+import { FaFire, FaSyncAlt, FaSearch, FaTimes } from "react-icons/fa";
 import PokemonCard from "./PokemonCard";
 import PokemonDetail from "./PokemonDetail";
 import {
@@ -18,6 +18,7 @@ function PokemonList() {
   const [loadingMore, setLoadingMore] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     loadData();
@@ -47,6 +48,7 @@ function PokemonList() {
     setSelectedType("all");
     setOrder("asc");
     setVisibleCount(12);
+    setSearchQuery("");
     await loadData();
     setTimeout(() => setRefreshing(false), 700);
   };
@@ -70,7 +72,17 @@ function PokemonList() {
     }
   };
 
-  const sortedPokemons = [...pokemons].sort((a, b) => {
+  const handleClearSearch = () => {
+    setSearchQuery("");
+  };
+
+  // Filter by search query
+  const filteredBySearch = pokemons.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Sort filtered pokemons
+  const sortedPokemons = [...filteredBySearch].sort((a, b) => {
     const idA = Number(a.url.split("/").slice(-2)[0]);
     const idB = Number(b.url.split("/").slice(-2)[0]);
     return order === "asc" ? idA - idB : idB - idA;
@@ -88,11 +100,17 @@ function PokemonList() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-96">
+      <div className="flex flex-col justify-center items-center h-96 gap-4">
+        {/* Spinner */}
         <div className="relative w-20 h-20">
-          <div className="absolute inset-0 border-4 border-white/30 rounded-full"></div>
-          <div className="absolute inset-0 border-4 border-t-white rounded-full animate-spin"></div>
+          <div className="absolute inset-0 border-4 border-white/20 rounded-full"></div>
+          <div className="absolute inset-0 border-4 border-t-gray-600 rounded-full animate-spin"></div>
         </div>
+
+        {/* Loading Text */}
+        <p className="text-white/70 font-mono tracking-widest text-sm animate-pulse">
+          LOADING...
+        </p>
       </div>
     );
   }
@@ -100,6 +118,27 @@ function PokemonList() {
   return (
     <>
       <div className="flex flex-wrap justify-center items-center gap-3 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 mb-8 animate-fadeIn">
+        {/* Search Input */}
+        <div className="relative flex-1 min-w-[200px] max-w-[300px]">
+          <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-white/50 text-sm pointer-events-none" />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search Pokémon..."
+            className="w-full bg-white/20 border border-white/30 rounded-lg pl-10 pr-10 py-2 text-xs md:text-sm font-mono text-white placeholder-white/50 focus:outline-none focus:border-white/60 transition"
+          />
+          {searchQuery && (
+            <button
+              onClick={handleClearSearch}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition"
+            >
+              <FaTimes className="text-sm" />
+            </button>
+          )}
+        </div>
+
+        {/* Order Select */}
         <select
           value={order}
           onChange={(e) => setOrder(e.target.value)}
@@ -113,6 +152,7 @@ function PokemonList() {
           </option>
         </select>
 
+        {/* Type Filter */}
         <div className="flex items-center gap-2">
           <FaFire className="text-white/70 text-sm" />
           <select
@@ -131,6 +171,7 @@ function PokemonList() {
           </select>
         </div>
 
+        {/* Refresh Button */}
         <button
           onClick={handleRefresh}
           disabled={refreshing}
@@ -142,29 +183,49 @@ function PokemonList() {
         </button>
       </div>
 
+      {/* Results Counter */}
       <p className="text-center text-white/70 font-mono text-xs md:text-sm tracking-widest mb-8">
         SHOWING{" "}
         <span className="text-white font-bold">{displayedPokemons.length}</span>{" "}
-        OF <span className="text-white font-bold">{pokemons.length}</span>
+        OF <span className="text-white font-bold">{sortedPokemons.length}</span>
+        {searchQuery && (
+          <span className="ml-2">
+            (filtered from{" "}
+            <span className="text-white font-bold">{pokemons.length}</span>)
+          </span>
+        )}
       </p>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
-        {displayedPokemons.map((pokemon, index) => (
-          <PokemonCard
-            key={pokemon.name}
-            pokemon={pokemon}
-            index={index}
-            onClick={() => setSelectedPokemon(pokemon.name)}
-          />
-        ))}
-      </div>
+      {/* Pokemon Grid */}
+      {sortedPokemons.length === 0 ? (
+        <div className="text-center py-20">
+          <p className="text-white/70 font-mono text-lg mb-2">
+            No Pokémon found
+          </p>
+          <p className="text-white/50 font-mono text-sm">
+            Try a different search term
+          </p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+          {displayedPokemons.map((pokemon, index) => (
+            <PokemonCard
+              key={pokemon.name}
+              pokemon={pokemon}
+              index={index}
+              onClick={() => setSelectedPokemon(pokemon.name)}
+            />
+          ))}
+        </div>
+      )}
 
-      {pokemons.length > visibleCount && (
+      {/* See More Button */}
+      {sortedPokemons.length > visibleCount && (
         <div className="flex justify-center mt-12 animate-fadeInUp">
           {loadingMore ? (
             <div className="relative w-12 h-12">
               <div className="absolute inset-0 border-4 border-white/20 rounded-full"></div>
-              <div className="absolute inset-0 border-4 border-t-white rounded-full animate-spin"></div>
+              <div className="absolute inset-0 border-4 border-t-gray-600 rounded-full animate-spin"></div>
             </div>
           ) : (
             <button
@@ -196,6 +257,7 @@ function PokemonList() {
         </div>
       )}
 
+      {/* Pokemon Detail Modal */}
       {selectedPokemon && (
         <div
           className="fixed inset-0 bg-black/80 flex justify-center items-start pt-8 md:pt-16 z-50 overflow-y-auto backdrop-blur-md"
