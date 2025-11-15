@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/meidinarevisp/pokemon-explorer.git/static/css/main.1cf71377.css",
+    "main.js": "/meidinarevisp/pokemon-explorer.git/static/js/main.e49fb679.js",
+    "index.html": "/meidinarevisp/pokemon-explorer.git/index.html",
+    "main.1cf71377.css.map": "/meidinarevisp/pokemon-explorer.git/static/css/main.1cf71377.css.map",
+    "main.e49fb679.js.map": "/meidinarevisp/pokemon-explorer.git/static/js/main.e49fb679.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1cf71377.css",
+    "static/js/main.e49fb679.js"
+  ]
+}
